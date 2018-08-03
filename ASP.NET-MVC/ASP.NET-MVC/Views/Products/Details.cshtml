@@ -4,10 +4,65 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details of product</h2>
+<h1 class="page-header"> Details of product </h1>
 
+<hr />
+<p><span style="font-weight:bold">Table view</span></p>
 <div>
-    <hr />
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modified)
+            </th>
+            <th>
+                @Html.DisplayName("Category ")
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Modified)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Category.Name)
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+<p><span style="font-weight:bold">List view</span></p>
+<div>
     <dl class="dl-horizontal">
 
         <dt>
