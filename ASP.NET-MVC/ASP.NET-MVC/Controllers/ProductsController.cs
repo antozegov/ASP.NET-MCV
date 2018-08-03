@@ -14,9 +14,13 @@ namespace ASP.NET_MVC.Controllers
     {
         private SQL_DatabaseEntities db = new SQL_DatabaseEntities();
 
-        public ActionResult Index()
+        public ViewResult Index(string search)
         {
             var products = db.Products.Include(p => p.Category);
+            if (!String.IsNullOrEmpty(search))
+            {
+                products = products.Where(p => p.Name.Contains(search));
+            }
             return View(products.ToList());
         }
 
