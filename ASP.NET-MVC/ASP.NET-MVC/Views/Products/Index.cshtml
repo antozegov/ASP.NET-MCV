@@ -20,24 +20,29 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sort = ViewBag.NameSortParam })
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.ActionLink("Price", "Index", new { sort = ViewBag.PriceSortParam })
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.ActionLink("IsActive", "Index", new { sort = ViewBag.IsActiveSortParam })
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Created)
+            @Html.ActionLink("Created", "Index", new { sort = ViewBag.CreatedSortParam })
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Modified)
+            @Html.ActionLink("Modified", "Index", new { sort = ViewBag.ModifiedSortParam })
         </th>
+
         <th>
-            @Html.DisplayName("Category ")
-            @Html.DisplayNameFor(model => model.Category.Name)
+            @Html.ActionLink("Category name", "Index", new { sort = ViewBag.CategoryNameSortParam })
         </th>
+
         <th></th>
     </tr>
 

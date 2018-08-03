@@ -14,12 +14,57 @@ namespace ASP.NET_MVC.Controllers
     {
         private SQL_DatabaseEntities db = new SQL_DatabaseEntities();
 
-        public ViewResult Index(string search)
+        public ViewResult Index(string search, string sort)
         {
+            ViewBag.NameSortParam = String.IsNullOrEmpty(sort) ? "name_desc" : "";
+            ViewBag.PriceSortParam = sort == "Price" ? "price_desc" : "Price";
+            ViewBag.IsActiveSortParam = sort == "IsActive" ? "isActive_desc" : "IsActive";
+            ViewBag.CreatedSortParam = sort == "Created" ? "created_desc" : "Created";
+            ViewBag.ModifiedSortParam = sort == "Modified" ? "modified_desc" : "Modified";
+            ViewBag.CategoryNameSortParam = sort == "Category name" ? "categoryName_desc" : "Category name";
             var products = db.Products.Include(p => p.Category);
             if (!String.IsNullOrEmpty(search))
             {
                 products = products.Where(p => p.Name.Contains(search));
+            }
+            switch (sort)
+            {
+                case "name_desc":
+                    products = products.OrderByDescending(s => s.Name);
+                    break;
+                case "Price":
+                    products = products.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    products = products.OrderByDescending(s => s.Price);
+                    break;
+                case "IsActive":
+                    products = products.OrderBy(s => s.IsActive);
+                    break;
+                case "isActive_desc":
+                    products = products.OrderByDescending(s => s.IsActive);
+                    break;
+                case "Created":
+                    products = products.OrderBy(s => s.Created);
+                    break;
+                case "created_desc":
+                    products = products.OrderByDescending(s => s.Created);
+                    break;
+                case "Modified":
+                    products = products.OrderBy(s => s.Modified);
+                    break;
+                case "modified_desc":
+                    products = products.OrderByDescending(s => s.Modified);
+                    break;
+                case "Category name":
+                    products = products.OrderBy(s => s.Category.Name);
+                    break;
+                case "categoryName_desc":
+                    products = products.OrderByDescending(s => s.Category.Name);
+                    break;
+                default:
+                    products = products.OrderBy(s => s.Name);
+                    break;
             }
             return View(products.ToList());
         }
